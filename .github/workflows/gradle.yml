@@ -107,6 +107,15 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
+          envs: |
+            DATASOURCE_URL,
+            DATASOURCE_USERNAME,
+            DATASOURCE_PASSWORD,
+            JWT_SECRET,
+            KAKAO_CLIENT_ID,
+            KAKAO_CLIENT_SECRET,
+            SERVER_DOMAIN_NAME,
+            SPRING_PROFILES_ACTIVE
           script: |
             cat <<EOF > ~/.env
             DATASOURCE_URL=$DATASOURCE_URL
