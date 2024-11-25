@@ -1,7 +1,5 @@
 package kr.ac.jnu.capstone.bigpicture.dongsim.entity;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import kr.ac.jnu.capstone.bigpicture.dongsim.dto.response.DollResponse;
@@ -11,7 +9,6 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@JsonNaming(SnakeCaseStrategy.class)
 @Getter
 @Setter
 @SuperBuilder

@@ -9,8 +9,8 @@ import kr.ac.jnu.capstone.bigpicture.dongsim._common.api.body.ApiResponseBody;
 import kr.ac.jnu.capstone.bigpicture.dongsim._common.auth.AuthorizedEndpoint;
 import kr.ac.jnu.capstone.bigpicture.dongsim._common.auth.AuthorizedEndpointContext;
 import kr.ac.jnu.capstone.bigpicture.dongsim._common.swagger.FailApiResponses;
-import kr.ac.jnu.capstone.bigpicture.dongsim.dto.request.CaretakerUpdateRequest;
-import kr.ac.jnu.capstone.bigpicture.dongsim.dto.response.CaretakerResponse;
+import kr.ac.jnu.capstone.bigpicture.dongsim.dto.request.ChildUpdateRequest;
+import kr.ac.jnu.capstone.bigpicture.dongsim.dto.response.ChildResponse;
 import kr.ac.jnu.capstone.bigpicture.dongsim.exception.ErrorCode;
 import kr.ac.jnu.capstone.bigpicture.dongsim.service.CaretakerService;
 import lombok.RequiredArgsConstructor;
@@ -24,38 +24,38 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/caretaker")
+@RequestMapping("/api/child")
 @RequiredArgsConstructor
-@Tag(name = "Caretaker - 보호자 API", description = "보호자 정보를 조회하고 수정하는 API")
-public class CaretakerController {
+@Tag(name = "Caretaker - 아이 API", description = "아이 정보를 조회하고 수정하는 API")
+public class ChildController {
 
     private final CaretakerService caretakerService;
 
     @Operation(
-        summary = "보호자 정보 확인",
+        summary = "아이 정보 확인",
         responses = @ApiResponse(responseCode = "200", useReturnTypeSchema = true))
     @FailApiResponses({
-        ErrorCode.AUTHORIZATION_FAILED,
-        ErrorCode.ENTITY_NOT_FOUND})
+        ErrorCode.ENTITY_NOT_FOUND,
+        ErrorCode.AUTHORIZATION_FAILED
+    })
     @GetMapping
-    public ResponseEntity<ApiResponseBody<CaretakerResponse>> getCaretaker(
-        @Parameter(hidden = true) @AuthorizedEndpoint AuthorizedEndpointContext authorizedEndpointContext)
-    {
-        return ResponseEntityBuilder.ok(caretakerService.getCaretaker(authorizedEndpointContext));
+    public ResponseEntity<ApiResponseBody<ChildResponse>> getChild(
+        @Parameter(hidden = true) @AuthorizedEndpoint AuthorizedEndpointContext authorizedEndpointContext) {
+        return ResponseEntityBuilder.ok(caretakerService.getChild(authorizedEndpointContext));
     }
 
     @Operation(
-        summary = "보호자 정보 수정",
+        summary = "아이 정보 수정",
         responses = @ApiResponse(responseCode = "200", useReturnTypeSchema = true))
     @FailApiResponses({
-        ErrorCode.AUTHORIZATION_FAILED,
-        ErrorCode.ENTITY_NOT_FOUND})
+        ErrorCode.ENTITY_NOT_FOUND,
+        ErrorCode.AUTHORIZATION_FAILED
+    })
     @PutMapping
-    public ResponseEntity<ApiResponseBody<CaretakerResponse>> updateCaretaker(
+    public ResponseEntity<ApiResponseBody<ChildResponse>> updateChild(
         @Parameter(hidden = true) @AuthorizedEndpoint AuthorizedEndpointContext authorizedEndpointContext,
-        @Parameter(description = "보호자 업데이트 정보")
-            @RequestBody CaretakerUpdateRequest updateRequest)
-    {
-        return ResponseEntityBuilder.ok(caretakerService.updateCaretaker(authorizedEndpointContext, updateRequest));
+        @Parameter(description = "아이 업데이트 정보")
+            @RequestBody ChildUpdateRequest updateRequest) {
+        return ResponseEntityBuilder.ok(caretakerService.updateChild(authorizedEndpointContext, updateRequest));
     }
 }
