@@ -1,7 +1,7 @@
 package kr.ac.jnu.capstone.bigpicture.dongsim.exception;
 
 import kr.ac.jnu.capstone.bigpicture.dongsim._common.api.ApiResponse;
-import kr.ac.jnu.capstone.bigpicture.dongsim._common.api.FailApiResponseBody;
+import kr.ac.jnu.capstone.bigpicture.dongsim._common.api.body.FailApiResponseBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

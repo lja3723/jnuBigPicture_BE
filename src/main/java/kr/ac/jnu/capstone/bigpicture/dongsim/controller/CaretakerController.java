@@ -1,7 +1,7 @@
 package kr.ac.jnu.capstone.bigpicture.dongsim.controller;
 
 import kr.ac.jnu.capstone.bigpicture.dongsim._common.api.ApiResponse;
-import kr.ac.jnu.capstone.bigpicture.dongsim._common.api.ApiResponseBody;
+import kr.ac.jnu.capstone.bigpicture.dongsim._common.api.body.ApiResponseBody;
 import kr.ac.jnu.capstone.bigpicture.dongsim.dto.request.CaretakerUpdateRequest;
 import kr.ac.jnu.capstone.bigpicture.dongsim.dto.response.CaretakerResponse;
 import kr.ac.jnu.capstone.bigpicture.dongsim.service.CaretakerService;

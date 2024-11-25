@@ -30,7 +30,7 @@ logging.level.kr.ac.jnu.capstone.bigpicture.dongsim: debug
 
 # for JWT
 jwt:
-  secret: ${JWT_SECRET} # 추후 변경필요
+  secret: ${JWT_SECRET}
   access:
     expiration: 86400000 # 1일
 
