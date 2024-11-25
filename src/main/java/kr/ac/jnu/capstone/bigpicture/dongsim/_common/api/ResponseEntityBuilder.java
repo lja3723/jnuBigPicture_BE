@@ -26,9 +26,12 @@ public class ResponseEntityBuilder {
         return ResponseEntity.noContent().build();
     }
 
-    public static ResponseEntity<ApiResponseBody<Void>> okWithHeaders(HttpHeaders headers) {
+    public static <T> ResponseEntity<ApiResponseBody<T>> okWithHeaders(T data, HttpHeaders headers) {
         return ResponseEntity.status(HttpStatus.OK)
             .headers(headers)
-            .build();
+            .body(ApiResponseBody.<T>builder()
+                .status("success")
+                .data(data)
+                .build());
     }
 }

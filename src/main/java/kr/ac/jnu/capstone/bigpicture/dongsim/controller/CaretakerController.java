@@ -47,6 +47,9 @@ public class CaretakerController {
     @Operation(
         summary = "보호자 정보 수정",
         responses = @ApiResponse(responseCode = "200", useReturnTypeSchema = true))
+    @FailApiResponses({
+        ErrorCode.AUTHORIZATION_FAILED,
+        ErrorCode.ENTITY_NOT_FOUND})
     @PutMapping
     public ResponseEntity<ApiResponseBody<CaretakerResponse>> updateCaretaker(
         @Parameter(hidden = true) @AuthorizedEndpoint AuthorizedEndpointContext authorizedEndpointContext,

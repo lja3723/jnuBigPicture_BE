@@ -14,6 +14,6 @@ import lombok.ToString;
 @Builder
 public class LoginRequest {
 
-    @Schema(description = "소셜 ID", example = "92981000192")
+    @Schema(description = "소셜 로그인으로 얻은 소셜 ID", example = "92981000192")
     private final String socialId;
 }

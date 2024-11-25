@@ -36,7 +36,6 @@ public class SwaggerConfig {
         return new ModelResolver(objectMapper.setPropertyNamingStrategy(PropertyNamingStrategies.SnakeCaseStrategy.INSTANCE));
     }
 
-    // FailApiResponses 어노테이션에 정의된 BusinessException 에 대한 ApiResponses 초기화
     @Bean
     public OperationCustomizer operationCustomizer() {
         return (operation, handlerMethod) -> {
