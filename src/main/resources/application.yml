@@ -4,10 +4,15 @@
 spring:
   application:
     name: dongsim
+
   profiles:
     default: dev # 기본 프로파일: dev
+
   thymeleaf:
     cache: false
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -40,3 +45,21 @@ oauth:
     client:
       id: ${KAKAO_CLIENT_ID}
       secret: ${KAKAO_CLIENT_SECRET}
+
+# for swagger
+springdoc:
+  # request media type 의 기본 값
+  default-consumes-media-type: application/json
+
+  # response media type 의 기본 값
+  default-produces-media-type: application/json
+
+  # 스웨거에서 제공하는 ui 라이브러리 설정
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+  # 스웨거 api문서 설정
+  api-docs:
+    path: /swagger/api-docs
+    enabled: true

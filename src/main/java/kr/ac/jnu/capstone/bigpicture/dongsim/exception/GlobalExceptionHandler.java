@@ -1,6 +1,5 @@
 package kr.ac.jnu.capstone.bigpicture.dongsim.exception;
 
-import kr.ac.jnu.capstone.bigpicture.dongsim._common.api.ApiResponse;
 import kr.ac.jnu.capstone.bigpicture.dongsim._common.api.body.FailApiResponseBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,6 +10,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<FailApiResponseBody> handleBusinessException(BusinessException e) {
-        return ApiResponse.fail.notFound(e.getMessage());
+        return ResponseEntity.status(e.errorCode.status)
+            .body(FailApiResponseBody.builder()
+                .status("fail")
+                .message(e.getMessage())
+                .build());
     }
 }

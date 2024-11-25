@@ -1,5 +1,6 @@
 package kr.ac.jnu.capstone.bigpicture.dongsim.service;
 
+import kr.ac.jnu.capstone.bigpicture.dongsim._common.auth.AuthorizedEndpointContext;
 import kr.ac.jnu.capstone.bigpicture.dongsim.dto.request.CaretakerUpdateRequest;
 import kr.ac.jnu.capstone.bigpicture.dongsim.dto.response.CaretakerResponse;
 import kr.ac.jnu.capstone.bigpicture.dongsim.entity.Caretaker;
@@ -16,15 +17,15 @@ public class CaretakerService {
     private final CaretakerRepository caretakerRepository;
 
     @Transactional(readOnly = true)
-    public CaretakerResponse getCaretaker(Long id) {
-        return caretakerRepository.findById(id)
+    public CaretakerResponse getCaretaker(AuthorizedEndpointContext context) {
+        return caretakerRepository.findById(context.getId())
             .map(Caretaker::toCaretakerResponse)
             .orElseThrow(() -> new EntityNotFoundException(Caretaker.class));
     }
 
     @Transactional
-    public CaretakerResponse updateCaretaker(Long id, CaretakerUpdateRequest updateRequest) {
-        Caretaker caretaker = caretakerRepository.findById(id)
+    public CaretakerResponse updateCaretaker(AuthorizedEndpointContext context, CaretakerUpdateRequest updateRequest) {
+        Caretaker caretaker = caretakerRepository.findById(context.getId())
             .orElseThrow(() -> new EntityNotFoundException(Caretaker.class));
         caretaker.update(updateRequest);
         return caretaker.toCaretakerResponse();

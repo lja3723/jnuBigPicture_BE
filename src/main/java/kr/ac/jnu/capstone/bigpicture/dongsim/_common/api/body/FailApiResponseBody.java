@@ -1,14 +1,12 @@
 package kr.ac.jnu.capstone.bigpicture.dongsim._common.api.body;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
-@JsonNaming(SnakeCaseStrategy.class)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @SuperBuilder
 @Getter
@@ -16,5 +14,9 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class FailApiResponseBody extends ResponseBodyBase {
 
+    @Schema(description = "응답 상태", example = "fail")
+    private final String status;
+
+    @Schema(description = "응답 메시지", example = "오류 원인 메시지")
     private final String message;
 }
