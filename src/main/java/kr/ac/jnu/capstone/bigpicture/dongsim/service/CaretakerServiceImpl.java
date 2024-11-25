@@ -1,8 +1,11 @@
 package kr.ac.jnu.capstone.bigpicture.dongsim.service;
 
+import java.time.LocalDate;
 import kr.ac.jnu.capstone.bigpicture.dongsim._common.auth.AuthorizedEndpointContext;
 import kr.ac.jnu.capstone.bigpicture.dongsim.dto.request.CaretakerUpdateRequest;
+import kr.ac.jnu.capstone.bigpicture.dongsim.dto.request.ChildUpdateRequest;
 import kr.ac.jnu.capstone.bigpicture.dongsim.dto.response.CaretakerResponse;
+import kr.ac.jnu.capstone.bigpicture.dongsim.dto.response.ChildResponse;
 import kr.ac.jnu.capstone.bigpicture.dongsim.entity.Caretaker;
 import kr.ac.jnu.capstone.bigpicture.dongsim.exception.EntityNotFoundException;
 import kr.ac.jnu.capstone.bigpicture.dongsim.repository.CaretakerRepository;
@@ -31,5 +34,26 @@ public class CaretakerServiceImpl implements CaretakerService {
             .orElseThrow(() -> new EntityNotFoundException(Caretaker.class));
         caretaker.update(updateRequest);
         return caretaker.toCaretakerResponse();
+    }
+
+    // TODO: implement
+    @Override
+    @Transactional(readOnly = true)
+    public ChildResponse getChild(AuthorizedEndpointContext context) {
+        return ChildResponse.builder()
+            .childName("")
+            .childBirthDate(LocalDate.now())
+            .build();
+    }
+
+    // TODO: implement
+    @Override
+    @Transactional
+    public ChildResponse updateChild(AuthorizedEndpointContext context,
+        ChildUpdateRequest updateRequest) {
+        return ChildResponse.builder()
+            .childName("")
+            .childBirthDate(LocalDate.now())
+            .build();
     }
 }
